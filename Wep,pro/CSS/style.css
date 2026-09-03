@@ -1,0 +1,723 @@
+/* =========================================
+    1. GLOBAL RESETS & SMOOTH SCROLLING
+   ========================================= */
+html {
+    scroll-behavior: smooth; /* This makes the jumping look like a smooth glide */
+    scroll-padding-top: 80px; /* Prevents the sticky navbar from covering section titles */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* =========================================
+    2. STICKY NAVIGATION BAR
+   ========================================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures the navbar stays on top of images while scrolling */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo h1 span {
+    font-weight: 400; 
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+.nav-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.auth-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.auth-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   3. SECTION 1: HERO
+   ========================================= */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 5%;
+    min-height: calc(100vh - 80px); 
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-text {
+    margin-bottom: 3rem;
+}
+
+.hero-text h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.hero-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-images img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1)); 
+}
+
+/* =========================================
+   4. SECTION 2: MONITOR CATEGORIES
+   ========================================= */
+.categories {
+    display: grid;
+    /* This allows as many items as possible to fit in one row */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    padding: 40px 5%;
+}
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Remove any margin-left/right here if you have it */
+}
+
+.category-card img {
+    width: 100%;
+    height: 180px;        
+    object-fit: contain;  
+    margin-bottom: 15px;
+}
+.category-card:hover img {
+    transform: translateY(-5px);
+}
+
+.category-card h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.category-card p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* =========================================
+    5. SECTION 3: ACCESSORIES (PLACEHOLDER)
+   ========================================= */
+.accessories-section {
+    padding: 10rem 5%;
+    text-align: center;
+    background-color: #eaeaea; /* Alternating background flavor */
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accessories-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.accessories-section p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* =========================================
+    6. SECTION 4: ABOUT US
+   ========================================= */
+.about-section {
+    background-color: #15161a; 
+    color: #fdf5ea;            
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 5%;
+}
+
+.about-content {
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.about-content h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+    7. RESPONSIVE LAYOUTS
+   ========================================= */
+@media (max-width: 992px) {
+    .hero-text h1 { font-size: 3rem; }
+    .categories { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
+}
+
+@media (max-width: 600px) {
+    .categories { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+/* =========================================
+    5. SECTION 3: ACCESSORIES (SPECIFIC DESIGN)
+   ========================================= */
+.accessories-container {
+    background-color: #ffffff;
+    padding: 3rem 5% 6rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Sub-tabs menu layout */
+.accessories-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 3rem;
+}
+
+.accessories-tabs a {
+    text-decoration: none;
+    color: #666666;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.accessories-tabs a:hover {
+    color: #000000;
+}
+
+/* Active tab style with deep teal line */
+.accessories-tabs a.active-tab {
+    color: #005a60;
+    font-weight: 700;
+    border-bottom: 3px solid #005a60;
+}
+
+.accessories-heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 4rem;
+}
+
+/* 2-Column Grid Layout */
+.accessories-grid {
+    display: grid;
+    /* Change '2' to '3' or '4' to fit more items in one row */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* Beautiful Rounded Cards */
+.accessory-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 32px; /* Smooth rounded corners */
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
+}
+
+.accessory-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.acc-img-wrapper {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.acc-img-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.accessory-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1.5rem;
+}
+
+.accessory-card p {
+    font-size: 1.05rem;
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+/* Dark Teal Buttons */
+.btn-contact {
+    background-color: #005a60;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 1.2rem;
+}
+
+.btn-contact:hover {
+    background-color: #004449;
+}
+
+.link-more {
+    color: #005a60;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: text-decoration 0.2s;
+}
+
+.link-more:hover {
+    text-decoration: underline;
+}
+
+/* Tablet Responsive Mode */
+@media (max-width: 850px) {
+    .accessories-grid {
+        grid-template-columns: 1fr;
+    }
+    .accessories-heading {
+        font-size: 2.5rem;
+    }
+}/* =========================================
+    6. AUTHENTICATION STYLES (LOGIN & REGISTER)
+   ========================================= */
+.auth-body {
+    background-color: #1a1a1a; /* Dark sleek background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.auth-box {
+    background-color: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.auth-box h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.auth-box p {
+    color: #666666;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #005a60;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 90, 96, 0.1);
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.auth-btn:hover {
+    background-color: #333333;
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #555555;
+}
+
+.auth-footer a {
+    color: #005a60;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.auth-back {
+    margin-top: 1.5rem;
+    border-top: 1px solid #eeeeee;
+    padding-top: 1.5rem;
+}
+
+.auth-back a {
+    color: #888888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.auth-back a:hover {
+    color: #1a1a1a;
+}
+/* =========================================
+   7. SUPER SIMPLE CART STYLES
+   ========================================= */
+
+/* Still need the cart link to look right in the navbar */
+.cart-link {
+    margin-right: 1rem;
+    color: #a0a0a0;
+    font-weight: 600;
+}
+.cart-link:hover, .active-cart {
+    color: #ffffff;
+}
+
+/* Basic white box container for the cart */
+.simple-cart-container {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 50px auto; /* Centers the box */
+    padding: 30px;
+    border: 1px solid #cccccc;
+}
+
+.simple-cart-container h2 {
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Basic HTML Table Styling */
+.simple-cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes double borders */
+    margin-bottom: 30px;
+}
+
+.simple-cart-table th, 
+.simple-cart-table td {
+    border: 1px solid #dddddd;
+    padding: 15px;
+    text-align: left;
+}
+
+.simple-cart-table th {
+    background-color: #f7f7f7;
+}
+
+/* Checkout Section at the bottom */
+.simple-cart-total {
+    text-align: right; /* Pushes total and button to the right side */
+}
+
+.simple-cart-total h3 {
+    margin-bottom: 15px;
+}
+
+.simple-checkout-btn {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.simple-checkout-btn:hover {
+    background-color: #005a60;
+}
+/* =========================================
+    8. ABOUT PAGE CONTACT BOX
+   ========================================= */
+.contact-box {
+    text-align: left; /* Forces the text to the left */
+    margin-top: 3rem; /* Pushes it down away from the vision text */
+    padding-top: 2rem;
+    border-top: 1px solid #333333; /* Adds a nice subtle line above it */
+}
+
+.contact-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.contact-box p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #a0a0a0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+/* =========================================
+    9. MONITOR CARD BUTTONS & PRICE
+   ========================================= */
+.category-card p {
+    margin-bottom: 0.5rem; /* Tightens the spacing for description and price */
+}
+
+.category-card p strong {
+    font-size: 1.2rem;
+    color: #005a60; /* Matches your teal accent */
+}
+
+.cart-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.cart-btn:hover {
+    background-color: #005a60;
+}
+
+.auth-box form {
+    padding-left: 15px;
+    padding-right: 22px; 
+    margin-top: 10px;
+}
+/* =========================================
+    10. DYNAMIC CART STATES (for the JS step)
+   ========================================= */
+
+/* Text that shows up when there's nothing in the cart.
+   Hidden by default -- JS switches this to "block" when cartBody is empty */
+.empty-cart-msg {
+    display: none;
+    text-align: center;
+    color: #888888;
+    font-size: 1.1rem;
+    padding: 50px 0px; /* a little uneven but whatever, it centers fine */
+}
+
+/* JS adds this class to the table when the cart has 0 items,
+   so the empty table with just headers doesn't show up looking weird */
+.simple-cart-table.cart-hidden {
+    display: none;
+}
+
+
+/* =========================================
+   SHOPPING CART BUTTONS
+   ========================================= */
+
+.quantity-btn {
+
+    background-color: #1a1a1a;
+
+    color: white;
+
+    border: none;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+}
+
+
+.quantity-btn:hover {
+
+    background-color: #005a60;
+
+}
+
+
+.remove-btn {
+
+    background-color: #8b0000;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+}
+
+
+.remove-btn:hover {
+
+    background-color: #b30000;
+
+}
+
+#logoutBtn {
+    background: none;
+    color: #ffffff;
+    border: none;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+#logoutBtn:hover {
+    color: #a0a0a0;
+}
